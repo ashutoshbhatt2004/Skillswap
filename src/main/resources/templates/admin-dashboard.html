@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillSwap | Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link th:href="@{/style.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">SkillSwap</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link active" href="admin-dashboard.html">Admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#mentors">Mentors</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
+            <li class="nav-item mt-2 mt-lg-0"><a class="btn btn-primary btn-sm px-3" href="register.html">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-3">
+          <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <h5 class="fw-bold text-primary mb-4">Admin Panel</h5>
+              <div class="d-grid gap-2">
+              <a href="#" class="btn btn-primary">Dashboard</a>
+              <a th:href="@{/admin/users}" class="btn btn-outline-primary">Users</a>
+              <a th:href="@{/admin/add-admin}" class="btn btn-outline-primary">Add Admin</a>
+              <a th:href="@{/admin/mentors}" class="btn btn-outline-primary">Mentors</a>
+              <a th:href="@{/admin/skills}" class="btn btn-outline-primary">Skills</a>
+              <a th:href="@{/admin/reviews}" class="btn btn-outline-primary">Reviews</a>
+              <a th:href="@{/admin/settings}" class="btn btn-outline-primary">Settings</a>
+              <a th:href="@{/logout}" class="btn btn-outline-secondary">Logout</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <section class="dashboard-hero card border-0 shadow-sm rounded-4 p-4 p-md-5 mb-4">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-8">
+                <p class="text-primary fw-semibold mb-2">Admin Overview</p>
+                <h1 class="display-6 fw-bold mb-3">Manage the platform with confidence.</h1>
+                <p class="text-muted mb-0">Monitor users, mentors, skills, reviews, and pending approvals in one place.</p>
+              </div>
+              <div class="col-lg-4 text-center">
+                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 96px; height: 96px; font-size: 2rem; font-weight: 700;">AD</div>
+                <p class="fw-semibold mb-0">Admin Account</p>
+                <span class="text-muted small">Platform Administrator</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="row g-4 mb-4">
+            <div class="col-sm-6 col-lg-3">
+              <div class="stat-card card border-0 shadow-sm rounded-4 p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h6 class="fw-semibold mb-0">Total Users</h6>
+                  <i class="bi bi-people-fill fs-4 text-primary"></i>
+                </div>
+                <h2 class="fw-bold mb-1">1,240</h2>
+                <p class="text-muted small mb-0">Registered accounts</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="stat-card card border-0 shadow-sm rounded-4 p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h6 class="fw-semibold mb-0">Mentors</h6>
+                  <i class="bi bi-person-badge-fill fs-4 text-primary"></i>
+                </div>
+                <h2 class="fw-bold mb-1">84</h2>
+                <p class="text-muted small mb-0">Active mentors</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="stat-card card border-0 shadow-sm rounded-4 p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h6 class="fw-semibold mb-0">Skills</h6>
+                  <i class="bi bi-tools fs-4 text-primary"></i>
+                </div>
+                <h2 class="fw-bold mb-1">128</h2>
+                <p class="text-muted small mb-0">Skill categories</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="stat-card card border-0 shadow-sm rounded-4 p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h6 class="fw-semibold mb-0">Reviews</h6>
+                  <i class="bi bi-star-fill fs-4 text-primary"></i>
+                </div>
+                <h2 class="fw-bold mb-1">356</h2>
+                <p class="text-muted small mb-0">Latest feedback</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="row g-4 mb-4">
+            <div class="col-lg-6">
+              <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                <h4 class="fw-bold mb-3">Recent Users</h4>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item px-0">Ava Thompson <span class="text-muted small">• 2 min ago</span></li>
+                  <li class="list-group-item px-0">Noah Carter <span class="text-muted small">• 10 min ago</span></li>
+                  <li class="list-group-item px-0">Mia Lewis <span class="text-muted small">• 32 min ago</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                <h4 class="fw-bold mb-3">Recent Mentors</h4>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item px-0">Sarah Kim <span class="text-muted small">• New mentor</span></li>
+                  <li class="list-group-item px-0">Daniel Ross <span class="text-muted small">• Verified</span></li>
+                  <li class="list-group-item px-0">Naomi Lee <span class="text-muted small">• Pending review</span></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="row g-4 mb-4">
+            <div class="col-lg-6">
+              <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                <h4 class="fw-bold mb-3">Recent Skills</h4>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item px-0">Spring Boot <span class="text-muted small">• 14 new requests</span></li>
+                  <li class="list-group-item px-0">Hibernate <span class="text-muted small">• 9 learners</span></li>
+                  <li class="list-group-item px-0">MySQL <span class="text-muted small">• 6 active sessions</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                <h4 class="fw-bold mb-3">Platform Analytics</h4>
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="card border-0 shadow-sm rounded-3 p-3 text-center">
+                      <i class="bi bi-graph-up-arrow text-primary fs-4 mb-2"></i>
+                      <h6 class="fw-semibold mb-0">Growth</h6>
+                      <p class="text-muted small mb-0">+18%</p>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="card border-0 shadow-sm rounded-3 p-3 text-center">
+                      <i class="bi bi-activity text-primary fs-4 mb-2"></i>
+                      <h6 class="fw-semibold mb-0">Engagement</h6>
+                      <p class="text-muted small mb-0">87%</p>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="card border-0 shadow-sm rounded-3 p-3 text-center">
+                      <i class="bi bi-clock-history text-primary fs-4 mb-2"></i>
+                      <h6 class="fw-semibold mb-0">Avg. Response</h6>
+                      <p class="text-muted small mb-0">2h 10m</p>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="card border-0 shadow-sm rounded-3 p-3 text-center">
+                      <i class="bi bi-check2-circle text-primary fs-4 mb-2"></i>
+                      <h6 class="fw-semibold mb-0">Approval Rate</h6>
+                      <p class="text-muted small mb-0">93%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="row g-4">
+            <div class="col-lg-7">
+              <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                <h4 class="fw-bold mb-3">Pending Requests</h4>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item px-0">Mentor application from Daniel Ross <span class="text-muted small">• Awaiting approval</span></li>
+                  <li class="list-group-item px-0">Skill approval request for AI Basics <span class="text-muted small">• Pending review</span></li>
+                  <li class="list-group-item px-0">User report from Noah Carter <span class="text-muted small">• Needs action</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                <h4 class="fw-bold mb-3">Recent Reviews</h4>
+                <div class="d-flex align-items-start gap-3 mb-3">
+                  <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">S</div>
+                  <div>
+                    <p class="fw-semibold mb-1">Sarah Kim</p>
+                    <p class="text-muted small mb-0">“Excellent mentor experience.”</p>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">M</div>
+                  <div>
+                    <p class="fw-semibold mb-1">Mia Lewis</p>
+                    <p class="text-muted small mb-0">“The platform keeps improving.”</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer bg-primary text-white pt-5 pb-3 mt-4">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3"><h5 class="fw-semibold mb-3">SkillSwap</h5><p class="text-white-50">A modern student platform for sharing knowledge, finding mentors, and growing together.</p></div>
+          <div class="col-md-6 col-lg-3"><h6 class="fw-semibold mb-3">Quick Links</h6><ul class="list-unstyled"><li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li><li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none">About</a></li><li class="mb-2"><a href="index.html#mentors" class="text-white-50 text-decoration-none">Mentors</a></li><li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li></ul></div>
+          <div class="col-md-6 col-lg-3"><h6 class="fw-semibold mb-3">Resources</h6><ul class="list-unstyled"><li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li><li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Terms & Conditions</a></li><li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li></ul></div>
+          <div class="col-md-6 col-lg-3"><h6 class="fw-semibold mb-3">Contact</h6><ul class="list-unstyled"><li class="mb-2 text-white-50">hello@skillswap.com</li><li class="mb-2 text-white-50">+44 20 5555 1234</li><li class="mb-2 text-white-50">123 Innovation Street</li></ul></div>
+        </div>
+        <hr class="border-light mt-4" />
+        <div class="text-center text-white-50 small pt-2">© 2026 SkillSwap. All Rights Reserved.</div>
+      </div>
+    </footer>
+  </body>
+</html>
+

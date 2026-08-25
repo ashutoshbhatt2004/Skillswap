@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillSwap | About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link th:href="@{/style.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">SkillSwap</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#mentors">Mentors</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
+            <li class="nav-item mt-2 mt-lg-0"><a class="btn btn-primary btn-sm px-3" href="register.html">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="container py-5">
+        <div class="row align-items-center g-4 py-4">
+          <div class="col-lg-7">
+            <p class="text-primary fw-semibold mb-2">About SkillSwap</p>
+            <h1 class="display-5 fw-bold mb-3">Building a brighter future through shared learning.</h1>
+            <p class="text-muted lead">We believe students grow faster when they can exchange knowledge, find mentors, and build meaningful connections.</p>
+          </div>
+          <div class="col-lg-5">
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+              <div class="map-placeholder d-flex align-items-center justify-content-center text-primary fw-semibold">Our Story in Motion</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container py-5">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+              <h3 class="fw-bold text-primary mb-3">Our Story</h3>
+              <p class="text-muted">SkillSwap started with a simple idea: students learn best when they teach, mentor, and collaborate. We created a welcoming space where ideas can travel from one learner to another.</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+              <h3 class="fw-bold text-primary mb-3">Mission</h3>
+              <p class="text-muted">To make skill-sharing accessible, practical, and inspiring for students across the globe.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container py-5">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+              <h3 class="fw-bold text-primary mb-3">Vision</h3>
+              <p class="text-muted">To create a world where every student can discover opportunity, confidence, and support through peer learning.</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+              <h3 class="fw-bold text-primary mb-3">Our Values</h3>
+              <ul class="text-muted mb-0">
+                <li>Growth through collaboration</li>
+                <li>Respect for every learner</li>
+                <li>Practical and meaningful learning</li>
+                <li>Supportive mentorship</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container py-5">
+        <div class="section-heading text-center mb-5">
+          <h2 class="fw-bold text-primary">Meet Our Team</h2>
+          <p class="text-muted mb-0">The people behind SkillSwap are passionate about helping learners succeed.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="card border-0 shadow-sm rounded-4 p-4 w-100">
+              <div class="mentor-avatar mb-3">AD</div>
+              <h5 class="fw-semibold">Ava Davis</h5>
+              <p class="text-primary mb-2">Founder & CEO</p>
+              <p class="text-muted small">A visionary leader focused on building meaningful mentorship communities.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="card border-0 shadow-sm rounded-4 p-4 w-100">
+              <div class="mentor-avatar mb-3">NK</div>
+              <h5 class="fw-semibold">Noah Kim</h5>
+              <p class="text-primary mb-2">Product Lead</p>
+              <p class="text-muted small">Shapes the platform experience to make learning simple and welcoming.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="card border-0 shadow-sm rounded-4 p-4 w-100">
+              <div class="mentor-avatar mb-3">SL</div>
+              <h5 class="fw-semibold">Sophie Lee</h5>
+              <p class="text-primary mb-2">Community Manager</p>
+              <p class="text-muted small">Builds connections between learners, mentors, and growing communities.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="card border-0 shadow-sm rounded-4 p-4 w-100">
+              <div class="mentor-avatar mb-3">MR</div>
+              <h5 class="fw-semibold">Mason Reed</h5>
+              <p class="text-primary mb-2">Mentor Success</p>
+              <p class="text-muted small">Ensures mentors have the tools they need to guide learners with confidence.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="card border-0 shadow-sm rounded-4 p-4 w-100">
+              <div class="mentor-avatar mb-3">TJ</div>
+              <h5 class="fw-semibold">Tara Jones</h5>
+              <p class="text-primary mb-2">Design Strategist</p>
+              <p class="text-muted small">Turns ideas into elegant experiences that make learning feel effortless.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 d-flex">
+            <div class="card border-0 shadow-sm rounded-4 p-4 w-100">
+              <div class="mentor-avatar mb-3">CA</div>
+              <h5 class="fw-semibold">Carlos Alvarez</h5>
+              <p class="text-primary mb-2">Learning Partner</p>
+              <p class="text-muted small">Supports new users as they discover the best ways to engage and grow.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container py-5">
+        <div class="section-heading text-center mb-5">
+          <h2 class="fw-bold text-primary">Journey Timeline</h2>
+          <p class="text-muted mb-0">Our path from a simple idea to a growing global learning community.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3"><div class="card border-0 shadow-sm rounded-4 p-4"><h5 class="fw-semibold text-primary">2021</h5><p class="text-muted mb-0">SkillSwap was founded to connect students with mentors.</p></div></div>
+          <div class="col-md-6 col-lg-3"><div class="card border-0 shadow-sm rounded-4 p-4"><h5 class="fw-semibold text-primary">2022</h5><p class="text-muted mb-0">We launched our first peer learning experience across campus communities.</p></div></div>
+          <div class="col-md-6 col-lg-3"><div class="card border-0 shadow-sm rounded-4 p-4"><h5 class="fw-semibold text-primary">2024</h5><p class="text-muted mb-0">Our mentorship network expanded to include professional experts and creators.</p></div></div>
+          <div class="col-md-6 col-lg-3"><div class="card border-0 shadow-sm rounded-4 p-4"><h5 class="fw-semibold text-primary">2026</h5><p class="text-muted mb-0">We continue growing with a stronger focus on practical skill sharing and community.</p></div></div>
+        </div>
+      </section>
+
+      <section class="container py-5">
+        <div class="section-heading text-center mb-5">
+          <h2 class="fw-bold text-primary">Why Choose SkillSwap</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4"><div class="card border-0 shadow-sm rounded-4 p-4 h-100"><h5 class="fw-semibold">Personalized Learning</h5><p class="text-muted mb-0">Connect with mentors who understand your goals and learning style.</p></div></div>
+          <div class="col-md-6 col-lg-4"><div class="card border-0 shadow-sm rounded-4 p-4 h-100"><h5 class="fw-semibold">Practical Growth</h5><p class="text-muted mb-0">Focus on real outcomes through hands-on guidance and actionable feedback.</p></div></div>
+          <div class="col-md-6 col-lg-4"><div class="card border-0 shadow-sm rounded-4 p-4 h-100"><h5 class="fw-semibold">Supportive Community</h5><p class="text-muted mb-0">Join a network of learners and mentors who celebrate progress together.</p></div></div>
+        </div>
+      </section>
+
+      <section class="container py-5">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+              <h3 class="fw-bold text-primary mb-3">Statistics</h3>
+              <div class="row g-3">
+                <div class="col-6"><div class="p-3 rounded-4 bg-light"><h3 class="fw-bold text-primary mb-0">10K+</h3><p class="text-muted mb-0">Active Learners</p></div></div>
+                <div class="col-6"><div class="p-3 rounded-4 bg-light"><h3 class="fw-bold text-primary mb-0">500+</h3><p class="text-muted mb-0">Mentors</p></div></div>
+                <div class="col-6"><div class="p-3 rounded-4 bg-light"><h3 class="fw-bold text-primary mb-0">25+</h3><p class="text-muted mb-0">Skills Covered</p></div></div>
+                <div class="col-6"><div class="p-3 rounded-4 bg-light"><h3 class="fw-bold text-primary mb-0">98%</h3><p class="text-muted mb-0">Satisfaction</p></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+              <h3 class="fw-bold text-primary mb-3">Ready to Explore?</h3>
+              <p class="text-muted">Take the next step and start building your skills with a community that supports your growth.</p>
+              <a href="register.html" class="btn btn-primary">Join SkillSwap</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer bg-primary text-white pt-5 pb-3 mt-4">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3"><h5 class="fw-semibold mb-3">SkillSwap</h5><p class="text-white-50">A modern student platform for sharing knowledge, finding mentors, and growing together.</p></div>
+          <div class="col-md-6 col-lg-3"><h6 class="fw-semibold mb-3">Quick Links</h6><ul class="list-unstyled"><li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li><li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none">About</a></li><li class="mb-2"><a href="index.html#mentors" class="text-white-50 text-decoration-none">Mentors</a></li><li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li></ul></div>
+          <div class="col-md-6 col-lg-3"><h6 class="fw-semibold mb-3">Resources</h6><ul class="list-unstyled"><li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li><li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Terms & Conditions</a></li><li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Help Center</a></li></ul></div>
+          <div class="col-md-6 col-lg-3"><h6 class="fw-semibold mb-3">Contact</h6><ul class="list-unstyled"><li class="mb-2 text-white-50">hello@skillswap.com</li><li class="mb-2 text-white-50">+44 20 5555 1234</li><li class="mb-2 text-white-50">123 Innovation Street</li></ul></div>
+        </div>
+        <hr class="border-light mt-4" />
+        <div class="text-center text-white-50 small pt-2">© 2026 SkillSwap. All Rights Reserved.</div>
+      </div>
+    </footer>
+  </body>
+</html>
+
