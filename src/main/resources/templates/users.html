@@ -54,7 +54,7 @@
                 <td th:text="${u.id}">1</td>
                 <td th:text="${u.fullName}">John Doe</td>
                 <td th:text="${u.email}">john@example.com</td>
-                <td th:text="${u.role}">STUDENT</td>
+                <td th:text="${u.role == 'M' ? 'MENTOR' : (u.role == 'S' ? 'STUDENT' : (u.role == 'A' ? 'ADMIN' : u.role))}">STUDENT</td>
               </tr>
               <tr th:if="${users == null or #lists.isEmpty(users)}">
                 <td colspan="4" class="text-muted small">No users found.</td>

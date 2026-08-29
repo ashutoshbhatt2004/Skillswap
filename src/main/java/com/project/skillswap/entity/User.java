@@ -2,6 +2,8 @@ package com.project.skillswap.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Locale;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -22,6 +24,24 @@ public class User {
     @Column(nullable = false)
     private String role; // 'STUDENT' ya 'MENTOR'
 
+    public static String normalizeRole(String role) {
+        if (role == null) {
+            return null;
+        }
+
+        String normalized = role.trim().toUpperCase(Locale.ROOT);
+        if ("M".equals(normalized)) {
+            return "MENTOR";
+        }
+        if ("S".equals(normalized)) {
+            return "STUDENT";
+        }
+        if ("A".equals(normalized)) {
+            return "ADMIN";
+        }
+        return normalized;
+    }
+
     // Getters and Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -31,6 +51,6 @@ public class User {
     public void setEmail(String email) { this.email = email; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public String getRole() { return normalizeRole(role); }
+    public void setRole(String role) { this.role = normalizeRole(role); }
 }
