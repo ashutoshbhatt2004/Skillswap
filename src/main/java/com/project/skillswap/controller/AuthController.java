@@ -3,11 +3,12 @@ package com.project.skillswap.controller;
 import com.project.skillswap.entity.User;
 import com.project.skillswap.service.UserService;
 
-import jakarta.servlet.http.HttpSession; // Session ke liye import
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -28,7 +29,7 @@ public class AuthController {
         // Trim inputs
         String nameTrim = fullName == null ? null : fullName.trim();
         String emailTrim = email == null ? null : email.trim().toLowerCase();
-        String roleTrim = role == null ? null : role.trim().toUpperCase();
+        String roleTrim = User.normalizeRole(role);
 
         // 1) Full name validation
         if (nameTrim == null || nameTrim.isBlank()) {
@@ -84,7 +85,7 @@ public class AuthController {
             @RequestParam("email") String email,
             @RequestParam("password") String password,
             HttpSession session,
-            jakarta.servlet.http.HttpServletRequest request) {
+            HttpServletRequest request) {
 
         System.out.println("--- LOGIN ATTEMPT --- Email: [" + email + "]");
 
@@ -93,17 +94,18 @@ public class AuthController {
         if (authenticatedUser != null) {
             System.out.println("Login SUCCESS! Role hai: " + authenticatedUser.getRole());
 
+            if (session == null && request != null) {
+                session = request.getSession(true);
+            }
+
             // Protect against session fixation: rotate the session id after successful authentication.
             try {
                 if (request != null) {
-                    // changeSessionId preserves session attributes and replaces the session id
                     request.changeSessionId();
                 }
             } catch (NoSuchMethodError | UnsupportedOperationException ex) {
-                // Servlet container does not support changeSessionId(); fall back to creating a new session safely
                 try {
                     if (session != null) {
-                        // Preserve attributes if any (none expected before login), then invalidate and create new session
                         java.util.Map<String, Object> attrs = new java.util.HashMap<>();
                         java.util.Enumeration<String> names = session.getAttributeNames();
                         while (names.hasMoreElements()) {
@@ -111,19 +113,22 @@ public class AuthController {
                             attrs.put(name, session.getAttribute(name));
                         }
                         session.invalidate();
-                        jakarta.servlet.http.HttpSession newSession = request.getSession(true);
-                        for (java.util.Map.Entry<String, Object> e : attrs.entrySet()) {
-                            newSession.setAttribute(e.getKey(), e.getValue());
+                        HttpSession newSession = request != null ? request.getSession(true) : null;
+                        if (newSession != null) {
+                            for (java.util.Map.Entry<String, Object> e : attrs.entrySet()) {
+                                newSession.setAttribute(e.getKey(), e.getValue());
+                            }
+                            session = newSession;
                         }
-                        session = newSession;
                     }
                 } catch (IllegalStateException ignore) {
                     // If session invalidation fails, continue and set attribute on current session
                 }
             }
 
-            // Store authenticated user in session (after session id rotation)
-            session.setAttribute("loggedInUser", authenticatedUser);
+            if (session != null) {
+                session.setAttribute("loggedInUser", authenticatedUser);
+            }
 
             if ("MENTOR".equals(authenticatedUser.getRole())) {
                 return "redirect:/mentor-dashboard";
