@@ -1,6 +1,7 @@
 package com.project.skillswap.controller;
 
 import com.project.skillswap.entity.User;
+import com.project.skillswap.service.LoginAttemptService;
 import com.project.skillswap.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +17,9 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LoginAttemptService loginAttemptService;
 
     // --- REGISTRATION LOGIC ---
     @PostMapping("/register")
@@ -63,7 +67,10 @@ public class AuthController {
             return "redirect:/register?error=Passwords%20do%20not%20match.";
         }
 
-        // 5) Role validation (only STUDENT or MENTOR allowed)
+        // 5) Role validation (only STUDENT or MENTOR allowed; ADMIN cannot be created publicly)
+        if ("ADMIN".equals(roleTrim)) {
+            return "redirect:/register?error=Admin%20registration%20is%20not%20allowed.";
+        }
         if (roleTrim == null || (!"STUDENT".equals(roleTrim) && !"MENTOR".equals(roleTrim))) {
             return "redirect:/register?error=Invalid%20role.";
         }
@@ -87,11 +94,20 @@ public class AuthController {
             HttpSession session,
             HttpServletRequest request) {
 
-        System.out.println("--- LOGIN ATTEMPT --- Email: [" + email + "]");
+        String normalizedEmail = email == null ? null : email.trim().toLowerCase();
+        String clientIp = request != null ? getClientIp(request) : "unknown";
 
-        User authenticatedUser = userService.authenticate(email, password);
+        if (loginAttemptService.isLocked(normalizedEmail, clientIp)) {
+            System.out.println("Login BLOCKED due to repeated failed attempts. Email: [" + normalizedEmail + "] IP: [" + clientIp + "]");
+            return "redirect:/login?error=true";
+        }
+
+        System.out.println("--- LOGIN ATTEMPT --- Email: [" + normalizedEmail + "]");
+
+        User authenticatedUser = userService.authenticate(normalizedEmail, password);
 
         if (authenticatedUser != null) {
+            loginAttemptService.clearAttempts(normalizedEmail, clientIp);
             System.out.println("Login SUCCESS! Role hai: " + authenticatedUser.getRole());
 
             if (session == null && request != null) {
@@ -138,9 +154,19 @@ public class AuthController {
             }
             return "redirect:/student-dashboard";
         } else {
+            loginAttemptService.recordFailedAttempt(normalizedEmail, clientIp);
             System.out.println("Login FAILED! Email ya password database se match nahi hua.");
             return "redirect:/login?error=true";
         }
+    }
+
+    private String getClientIp(HttpServletRequest request) {
+        if (request == null) {
+            return "unknown";
+        }
+
+        String ip = request.getRemoteAddr();
+        return ip == null || ip.isBlank() ? "unknown" : ip;
     }
 
     @GetMapping("/logout")
